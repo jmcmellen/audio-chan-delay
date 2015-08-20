@@ -1,0 +1,26 @@
+#from http://dsp.stackexchange.com/a/738
+
+period = 1 / sample_freq
+covariance = 0
+
+def covar(left_audio, right_audio):
+    for idx, sample in enumerate(left_audio):
+        covariance += left_audio[idx] * right_audio[idx]
+    return covariance
+
+def delay_audio(samples, delay):
+    return samples_padded_with_zeros
+
+def xcorr(left_audio, right_audio):
+    corr_list = []
+    max_corr = (0, 0)
+    for delay in range(-max_delay, max_delay):
+        covariance = covar(delay_audio(left_audio, -delay),
+                           delay_audio(right_audio, delay))
+        corr_list.append(covariance)
+        if covariance > max_corr :
+            max_corr = (delay, covariance)
+    return max_corr
+
+delay_value, cross_cor = xcorr(left_audio, right_audio)
+
